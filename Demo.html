@@ -6,17 +6,45 @@
 </head>
 
 <body>
+	<div id="foldercontainer" onClick="vensterOpenen()">
+		<div id="folder"></div>
+		<div id="titel">Portfolio</div>
+	</div>
 <div id="venster">
 	<div id="balk">This PC > Local Disk (C:) > Portfolio</div>
-	<div id="icoon">X</div>
+	<div id="icoon" onClick="vensterSluiten()">X</div>
 </div>
 
 <style>
+	#foldercontainer{
+		width:75px;
+	}
+	#titel{
+		width:100%;
+		text-align:center;
+		font-size:11px;
+	}
+	#folder{
+		width:75px;
+		height:75px;
+		background-image: url(folder.jpg);
+		background-size: contain;
+		z-index:100;
+	}
+	
+	#folder:hover{
+		cursor:pointer;
+	}
+
 #venster{
   width:400px;
   height: 250px;
   background-color:white;
   border: solid 1px black;
+	z-index:500;
+	display:none;
+	position:absolute;
+
 }
 
 #balk{
@@ -35,7 +63,12 @@
   color:white;
   font-size:10px;
   text-align:right;
+}
+	
+#icoon:hover{
+  cursor:pointer
 }	
+	
 </style>
 	
 <script>
@@ -50,6 +83,16 @@ function addListeners(){
 function mouseUp()
 {
     window.removeEventListener('mousemove', divMove, true);
+}
+	
+function vensterSluiten()
+{
+   document.getElementById('venster').style.display ="none";
+}
+	
+function vensterOpenen()
+{
+   document.getElementById('venster').style.display ="block";
 }
 
 function mouseDown(e){
