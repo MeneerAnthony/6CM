@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>DEMO versleepbaar kader</title>
+</head>
+
+<body>
+<div id="venster">
+	<div id="balk">This PC > Local Disk (C:) > Portfolio</div>
+	<div id="icoon">X</div>
+</div>
+
+<style>
+#venster{
+  width:400px;
+  height: 250px;
+  background-color:white;
+  border: solid 1px black;
+}
+
+#balk{
+  width:50%;
+  height: 15px;
+  background-color:black;
+  color:white;
+  font-size:10px;
+  float:left;
+}
+#icoon{
+  float:right;
+  width:50%;
+  height: 15px;
+  background-color:black;
+  color:white;
+  font-size:10px;
+  text-align:right;
+}	
+</style>
+	
+<script>
+	window.onload = addListeners();
+
+function addListeners(){
+    document.getElementById('venster').addEventListener('mousedown', mouseDown, false);
+    window.addEventListener('mouseup', mouseUp, false);
+
+}
+
+function mouseUp()
+{
+    window.removeEventListener('mousemove', divMove, true);
+}
+
+function mouseDown(e){
+  window.addEventListener('mousemove', divMove, true);
+}
+
+function divMove(e){
+    var div = document.getElementById('venster');
+  div.style.position = 'absolute';
+  div.style.top = e.clientY + 'px';
+  div.style.left = e.clientX + 'px';
+}
+	
+</script>
+</body>
+</html>
