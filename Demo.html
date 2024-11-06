@@ -6,13 +6,13 @@
 </head>
 
 <body>
-	<div id="foldercontainer" onClick="vensterOpenen()">
+	<div id="foldercontainer" class="hover" onClick="vensterOpenen()">
 		<div id="folder"></div>
-		<div id="titel">Portfolio</div>
+		<div id="titel" class="hover">Portfolio</div>
 	</div>
 <div id="venster">
 	<div id="balk">This PC > Local Disk (C:) > Portfolio</div>
-	<div id="icoon" onClick="vensterSluiten()">X</div>
+	<div id="icoon" onClick="vensterSluiten()" class="hover">X</div>
 </div>
 
 <style>
@@ -21,66 +21,58 @@
   -ms-user-select: none; /* IE 10 and IE 11 */
   user-select: none; /* Standard syntax */
 }
-	#foldercontainer{
-		width:75px;
-	}
-	#titel{
-		width:100%;
-		text-align:center;
-		font-size:11px;
-	}
-	#folder{
-		width:75px;
-		height:75px;
-		background-image: url(folder.jpg);
-		background-size: contain;
-		z-index:100;
-	}
-	
-	#folder:hover{
-		cursor:pointer;
-	}
+#foldercontainer{
+	width:75px;
+}
+#titel{
+	width:100%;
+	text-align:center;
+	font-size:11px;
+}
+#folder{
+	width:75px;
+	height:75px;
+	background-image: url(folder.jpg);
+	background-size: contain;
+	z-index:100;
+}
 
 #venster{
-  width:400px;
-  height: 250px;
-  background-color:white;
-  border: solid 1px black;
+	width:400px;
+	height: 250px;
+	background-color:white;
+	border: solid 1px black;
 	z-index:500;
 	display:none;
 	position:absolute;
-
 }
 
 #balk{
-  width:50%;
-  height: 15px;
-  background-color:black;
-  color:white;
-  font-size:10px;
-  float:left;
+	width:50%;
+	height: 15px;
+	background-color:black;
+	color:white;
+	font-size:10px;
+	float:left;
 }
+	
 #icoon{
-  float:right;
-  width:50%;
-  height: 15px;
-  background-color:black;
-  color:white;
-  font-size:10px;
-  text-align:right;
-	
+	float:right;
+	width:50%;
+	height: 15px;
+	background-color:black;
+	color:white;
+	font-size:10px;
+	text-align:right;
 }
 	
-#icoon:hover{
-  cursor:pointer
+.hover:hover{
+	cursor:pointer
 }	
-	
 </style>
 	
 <script>
-	
-	
-	window.onload = addListeners();
+window.onload = addListeners();
 
 function addListeners(){
     document.getElementById('venster').addEventListener('mousedown', mouseDown, false);
