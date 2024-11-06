@@ -16,6 +16,11 @@
 </div>
 
 <style>
+	* {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
 	#foldercontainer{
 		width:75px;
 	}
@@ -63,6 +68,7 @@
   color:white;
   font-size:10px;
   text-align:right;
+	
 }
 	
 #icoon:hover{
@@ -72,6 +78,8 @@
 </style>
 	
 <script>
+	
+	
 	window.onload = addListeners();
 
 function addListeners(){
