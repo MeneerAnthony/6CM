@@ -9,7 +9,7 @@
 </head>
 
 <body>
-	<div class="hover foldercontainer" ondblclick="vensterOpenen()" onClick="vensterSelecteren()">
+	<div class="hover foldercontainer" ondblclick="vensterOpenen()" onClick="vensterSelecteren('portfolio')">
 		<div class="folder"></div>
 		<div class="hover titel" id="portfolio">Portfolio</div>
 	</div>
@@ -17,21 +17,21 @@
 	<div id="balk">This PC &gt; Local Disk (C:) &gt; Portfolio
 		<div id="icoon" onClick="vensterSluiten()" class="hover" style="font-size:18px; line-height: 16px;">X</div>
 	</div>
-	<div class="hover foldercontainer" onClick="vensterOpenen()" style="margin: 15px 0 0 15px;">
+	<div class="hover foldercontainer" onClick="vensterSelecteren('fotografie')" style="margin: 15px 0 0 15px;">
 		<div class="folder"></div>
-		<div class="hover titel">Fotografie</div>
+		<div class="hover titel" id="fotografie">Fotografie</div>
 	</div>
-	<div class="hover foldercontainer" onClick="vensterOpenen()" style="margin: 15px 0 0 30px;">
+	<div class="hover foldercontainer" onClick="vensterSelecteren('video')" style="margin: 15px 0 0 30px;">
 		<div class="folder"></div>
-		<div class="hover titel">Video</div>
+		<div class="hover titel" id="video">Video</div>
 	</div>
-	<div class="hover foldercontainer" onClick="vensterOpenen()" style="margin: 15px 0 0 30px;">
+	<div class="hover foldercontainer" onClick="vensterSelecteren('webdesign')" style="margin: 15px 0 0 30px;">
 		<div class="folder"></div>
-		<div class="hover titel">Webdesign</div>
+		<div class="hover titel" id="webdesign">Webdesign</div>
 	</div>
-	<div class="hover foldercontainer" onClick="vensterOpenen()" style="margin: 15px 0 0 30px;">
+	<div class="hover foldercontainer" onClick="vensterSelecteren('grafisch')" style="margin: 15px 0 0 30px;">
 		<div class="folder"></div>
-		<div class="hover titel">Grafisch Ontwerp</div>
+		<div class="hover titel" id="grafisch">Grafisch Ontwerp</div>
 	</div>
 </div>
 
@@ -117,10 +117,21 @@ function vensterSluiten(){
 	document.getElementById('portfolio').style.color ="black";
 	document.getElementById('portfolio').style.backgroundColor ="white";
 }
+function deselecteerVensters(){
+	document.getElementById('fotografie').style.color ="black";
+	document.getElementById('video').style.color ="black";
+	document.getElementById('grafisch').style.color ="black";
+	document.getElementById('webdesign').style.color ="black";
+	document.getElementById('fotografie').style.backgroundColor ="white";
+	document.getElementById('video').style.backgroundColor ="white";
+	document.getElementById('grafisch').style.backgroundColor ="white";
+	document.getElementById('webdesign').style.backgroundColor ="white";
+}
 
-function vensterSelecteren(){
-	document.getElementById('portfolio').style.color ="white";
-	document.getElementById('portfolio').style.backgroundColor ="black";
+function vensterSelecteren(id){
+	deselecteerVensters()
+	document.getElementById(id).style.color ="white";
+	document.getElementById(id).style.backgroundColor ="black";
 }
 	
 function addListeners(){
