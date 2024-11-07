@@ -6,160 +6,198 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+<style>
+    * {
+        -webkit-user-select: none; /* Safari */
+        -ms-user-select: none; /* IE 10 and IE 11 */
+        user-select: none; /* Standard syntax */
+        font-family: "VT323", monospace;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 15px;
+    }
+    *:hover {
+        cursor: default;
+    }
+    .foldercontainer {
+        width: 75px;
+        float: left;
+        text-align: center;
+        margin: 15px 0 0 15px;
+    }
+    .titel {
+        width: 100%;
+    }
+    .folder {
+        width: 76px;
+        height: 69px;
+        background-image: url(folder.png);
+        background-size: contain;
+    }
+    .venster {
+        width: 500px;
+        height: 300px;
+        background-color: white;
+        border: solid 1px black;
+        display: none;
+        position: absolute;
+        z-index: 1;
+    }
+    .balk {
+        width: calc(100% - 10px);
+        height: 25px;
+        padding: 5px;
+        background-color: black;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .icoon {
+        height: 15px;
+        width: 20px;
+        background-color: black;
+        color: white;
+        font-size: 10px;
+        line-height: 15px;
+        text-align: center;
+        border: solid 0.5px white;
+    }
+    .selected {
+        color: white;
+        background-color: black;
+    }
+</style>
 </head>
 
 <body>
-	<div class="hover foldercontainer" ondblclick="vensterOpenen()" onClick="vensterSelecteren('portfolio')">
-		<div class="folder"></div>
-		<div class="hover titel" id="portfolio">Portfolio</div>
-	</div>
-<div id="venster">
-	<div id="balk">This PC &gt; Local Disk (C:) &gt; Portfolio
-		<div id="icoon" onClick="vensterSluiten()" class="hover" style="font-size:18px; line-height: 16px;">X</div>
-	</div>
-	<div class="hover foldercontainer" onClick="vensterSelecteren('fotografie')" style="margin: 15px 0 0 15px;">
-		<div class="folder"></div>
-		<div class="hover titel" id="fotografie">Fotografie</div>
-	</div>
-	<div class="hover foldercontainer" onClick="vensterSelecteren('video')" style="margin: 15px 0 0 30px;">
-		<div class="folder"></div>
-		<div class="hover titel" id="video">Video</div>
-	</div>
-	<div class="hover foldercontainer" onClick="vensterSelecteren('webdesign')" style="margin: 15px 0 0 30px;">
-		<div class="folder"></div>
-		<div class="hover titel" id="webdesign">Webdesign</div>
-	</div>
-	<div class="hover foldercontainer" onClick="vensterSelecteren('grafisch')" style="margin: 15px 0 0 30px;">
-		<div class="folder"></div>
-		<div class="hover titel" id="grafisch">Grafisch Ontwerp</div>
-	</div>
-</div>
+    <div class="hover foldercontainer" ondblclick="vensterOpenen('venster')" onclick="vensterSelecteren('portfolio')">
+        <div class="folder"></div>
+        <div class="hover titel" id="portfolio">Portfolio</div>
+    </div>
 
-<style>
-	* {
-  -webkit-user-select: none; /* Safari */
-  -ms-user-select: none; /* IE 10 and IE 11 */
-  user-select: none; /* Standard syntax */
-  font-family: "VT323", monospace;
-  font-weight: 400;
-  font-style: normal;
-  font-size:15px;
-}
-	
-.foldercontainer{
-	width:75px;
-	float:left;
-}
-.titel{
-	width:100%;
-	text-align:center;
-}
-.folder{
-	width:75px;
-	height:75px;
-	background-image: url(folder.jpg);
-	background-size: contain;
-	z-index:100;
-}
+    <div id="venster" class="venster">
+        <div class="balk" id="balk">This PC &gt; Local Disk (C:) &gt; Portfolio
+            <div id="icoon" onclick="vensterSluiten('venster')" class="hover icoon">X</div>
+        </div>
+        <div class="hover foldercontainer" ondblclick="vensterOpenen('venster_grafisch')" onclick="vensterSelecteren('grafisch')">
+            <div class="folder"></div>
+            <div class="hover titel" id="grafisch">Grafisch Ontwerp</div>
+        </div>
+        <div class="hover foldercontainer" ondblclick="vensterOpenen('venster_fotografie')" onclick="vensterSelecteren('fotografie')">
+            <div class="folder"></div>
+            <div class="hover titel" id="fotografie">Fotografie</div>
+        </div>
+        <div class="hover foldercontainer" ondblclick="vensterOpenen('venster_video')" onclick="vensterSelecteren('video')">
+            <div class="folder"></div>
+            <div class="hover titel" id="video">Video</div>
+        </div>
+        <div class="hover foldercontainer" ondblclick="vensterOpenen('venster_webdesign')" onclick="vensterSelecteren('webdesign')">
+            <div class="folder"></div>
+            <div class="hover titel" id="webdesign">Webdesign</div>
+        </div>
+    </div>
+    
+    <div id="venster_grafisch" class="venster">
+        <div class="balk" id="balk_grafisch">This PC &gt; Local Disk (C:) &gt; Portfolio &gt; Grafisch ontwerp
+            <div id="icoon_grafisch" onclick="vensterSluiten('venster_grafisch')" class="hover icoon">X</div>
+        </div>
+    </div>
+    
+    <div id="venster_fotografie" class="venster">
+        <div class="balk" id="balk_fotografie">This PC &gt; Local Disk (C:) &gt; Portfolio &gt; Fotografie
+            <div id="icoon_fotografie" onclick="vensterSluiten('venster_fotografie')" class="hover icoon">X</div>
+        </div>
+    </div>
+    
+    <div id="venster_video" class="venster">
+        <div class="balk" id="balk_video">This PC &gt; Local Disk (C:) &gt; Portfolio &gt; Video
+            <div id="icoon_video" onclick="vensterSluiten('venster_video')" class="hover icoon">X</div>
+        </div>
+    </div>
+    
+    <div id="venster_webdesign" class="venster">
+        <div class="balk" id="balk_webdesign">This PC &gt; Local Disk (C:) &gt; Portfolio &gt; Webdesign
+            <div id="icoon_webdesign" onclick="vensterSluiten('venster_webdesign')" class="hover icoon">X</div>
+        </div>
+    </div>
 
-#venster{
-	width:500px;
-	height: 300px;
-	background-color:white;
-	border: solid 1px black;
-	z-index:500;
-	display:none;
-	margin:auto;
-}
-
-#balk{
-	width:490px;
-	height: 15px;
-	padding: 5px;
-	background-color:black;
-	color:white;
-	float:left;
-}
-	
-#balk:hover{
-cursor:default;
-}
-	
-#icoon{
-	float:right;
-	height: 15px;
-	width: 20px;
-	background-color:black;
-	color:white;
-	font-size:10px;
-	line-height:15px;
-	text-align:center;
-	border: solid 0.5px white;
-}
-	
-.hover:hover{
-	cursor:default;
-}
-	
-</style>
-	
 <script>
-let offsetX = 0;
-let offsetY = 0;
-let isDragging = false;
-	
-function vensterOpenen(){
-	document.getElementById('venster').style.display ="block";
-}
-	
-function vensterSluiten(){
-	document.getElementById('venster').style.display ="none";
-	document.getElementById('portfolio').style.color ="black";
-	document.getElementById('portfolio').style.backgroundColor ="white";
-}
-function deselecteerVensters(){
-	document.getElementById('fotografie').style.color ="black";
-	document.getElementById('video').style.color ="black";
-	document.getElementById('grafisch').style.color ="black";
-	document.getElementById('webdesign').style.color ="black";
-	document.getElementById('fotografie').style.backgroundColor ="white";
-	document.getElementById('video').style.backgroundColor ="white";
-	document.getElementById('grafisch').style.backgroundColor ="white";
-	document.getElementById('webdesign').style.backgroundColor ="white";
-}
+    let zIndexCounter = 1;  // Globale variabele voor het bijhouden van de z-index
+    let offset = 30;  // Beginoffset voor de vensters
+    const maxOffset = 150;  // Max offset voordat deze reset
 
-function vensterSelecteren(id){
-	deselecteerVensters()
-	document.getElementById(id).style.color ="white";
-	document.getElementById(id).style.backgroundColor ="black";
-}
-	
-function addListeners(){
-    document.getElementById('balk').addEventListener('mousedown', mouseDown, false);
-    window.addEventListener('mouseup', mouseUp, false);
-}
+    function vensterOpenen(id) {
+        const venster = document.getElementById(id);
+        venster.style.display = "block";
+        venster.style.zIndex = ++zIndexCounter;
 
-function mouseDown(e){
-	const div = document.getElementById('venster');
-	window.addEventListener('mousemove', divMove, true);
-	if (e.target.id === 'balk') {
-        isDragging = true;
-        offsetX = e.clientX - div.offsetLeft;
-        offsetY = e.clientY - div.offsetTop;
+        if (id === "venster") {
+            // Plaats het hoofdvenster in het midden van de pagina
+            const centerX = (window.innerWidth - venster.offsetWidth) / 2;
+            const centerY = (window.innerHeight - venster.offsetHeight) / 2;
+            venster.style.left = `${centerX}px`;
+            venster.style.top = `${centerY}px`;
+        } else {
+            // Gebruik een offset voor de andere vensters
+            venster.style.left = `${offset}px`;
+            venster.style.top = `${offset}px`;
+            offset += 30;  // Verhoog de offset voor het volgende venster
+
+            // Reset de offset indien de waarde groter wordt dan maxOffset
+            if (offset > maxOffset) {
+                offset = 30;
+            }
+        }
     }
-}
 
-function mouseUp() {isDragging = false;}
-	
-function divMove(e){
-    if (isDragging){
-        const div = document.getElementById('venster');
-        div.style.position = 'absolute';
-        div.style.left = (e.clientX - offsetX) + 'px';
-        div.style.top = (e.clientY - offsetY) + 'px';
+    function vensterSluiten(id) {
+        document.getElementById(id).style.display = "none";
     }
-}	
-window.onload = addListeners();
+
+    function vensterSelecteren(id) {
+        deselecteerVensters();
+        document.getElementById(id).classList.add("selected");
+    }
+
+    function deselecteerVensters() {
+        ["portfolio", "grafisch", "fotografie", "video", "webdesign"]
+            .forEach(id => document.getElementById(id).classList.remove("selected"));
+    }
+
+    function addListeners() {
+        document.querySelectorAll('.balk').forEach(balk => {
+            balk.addEventListener('mousedown', mouseDown, false);
+        });
+        window.addEventListener('mouseup', mouseUp, false);
+    }
+
+    function mouseDown(e) {
+        const venster = e.target.closest('.venster');
+        venster.dataset.isDragging = "true";
+        venster.dataset.offsetX = e.clientX - venster.offsetLeft;
+        venster.dataset.offsetY = e.clientY - venster.offsetTop;
+        venster.style.zIndex = ++zIndexCounter;
+        window.addEventListener('mousemove', divMove, true);
+    }
+
+    function mouseUp() {
+        document.querySelectorAll('.venster').forEach(venster => {
+            venster.dataset.isDragging = "false";
+        });
+        window.removeEventListener('mousemove', divMove, true);
+    }
+
+    function divMove(e) {
+        document.querySelectorAll('.venster').forEach(venster => {
+            if (venster.dataset.isDragging === "true") {
+                venster.style.left = `${e.clientX - venster.dataset.offsetX}px`;
+                venster.style.top = `${e.clientY - venster.dataset.offsetY}px`;
+            }
+        });
+    }
+
+    window.addEventListener('load', addListeners);
 </script>
 </body>
 </html>
