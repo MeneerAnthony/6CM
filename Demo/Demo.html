@@ -33,11 +33,24 @@
 		word-wrap: break-word;
     }
     .folder {
-        width: 76px;
+        width: 70px;
         height: 69px;
         background-image: url(folder.png);
         background-size: contain;
+		margin-bottom:5px;
     }
+	.imagebestand{
+		width: 76px;
+        height: 69px;
+		background-image: url("image.png");
+		background-size: contain;
+		margin-bottom:5px;
+	}
+	#prullenmandfolder{
+		background-image: url("prullenmand.png");
+		margin-bottom:5px;
+	}
+
     .venster {
         width: 500px;
         height: 300px;
@@ -97,7 +110,7 @@
         <div class="titel" id="portfolio">Portfolio</div>
     </div>
     <div class="foldercontainer" ondblclick="vensterOpenen('venster_prullenmand')" onclick="vensterSelecteren('prullenmand', event)">
-        <div class="folder"></div>
+        <div class="folder" id="prullenmandfolder"></div>
         <div class="titel" id="prullenmand">Prullenmand</div>
     </div>
 	
@@ -130,11 +143,11 @@
             <div class="icoon" onclick="vensterSluiten('venster_prullenmand')">X</div>
         </div>
 		<div class="foldercontainer" onclick="vensterSelecteren('logo', event)">
-        	<div class="folder"></div>
+        	<div class="imagebestand"></div>
         	<div class="titel" id="logo">Logoontwerp_<br>v1_v2_final_<br>verbeterd_<br>klaar.ai</div>
     	</div>
 		<div class="foldercontainer" onclick="vensterSelecteren('jajkbzgjbgz', event)">
-        	<div class="folder"></div>
+        	<div class="imagebestand"></div>
         	<div class="titel" id="jajkbzgjbgz">jajkbzgjbgz.jpeg</div>
     	</div>
     </div>
@@ -144,11 +157,11 @@
             <div class="icoon" onclick="vensterSluiten('venster_grafisch')">X</div>
         </div>
 		<div class="foldercontainer" onclick="vensterSelecteren('branding', event)">
-        	<div class="folder"></div>
+        	<div class="imagebestand"></div>
         	<div class="titel" id="branding">Branding</div>
     	</div>
 		<div class="foldercontainer" onclick="vensterSelecteren('posters', event)">
-        	<div class="folder"></div>
+        	<div class="imagebestand"></div>
         	<div class="titel" id="posters">Posters</div>
     	</div>
     </div>
@@ -158,7 +171,7 @@
             <div class="icoon" onclick="vensterSluiten('venster_fotografie')">X</div>
         </div>
 		<div class="foldercontainer" onclick="vensterSelecteren('fotografiereeks', event)">
-        	<div class="folder"></div>
+        	<div class="imagebestand"></div>
         	<div class="titel" id="fotografiereeks">Fotografie<br>reeks</div>
     	</div>
     </div>
@@ -168,11 +181,11 @@
             <div class="icoon" onclick="vensterSluiten('venster_video')">X</div>
         </div>
 		<div class="foldercontainer" onclick="vensterSelecteren('reclamespot', event)">
-        	<div class="folder"></div>
+        	<div class="imagebestand"></div>
         	<div class="titel" id="reclamespot">Reclamespot</div>
     	</div>
 		<div class="foldercontainer" onclick="vensterSelecteren('chromakey', event)">
-        	<div class="folder"></div>
+        	<div class="imagebestand"></div>
         	<div class="titel" id="chromakey">Chroma Key</div>
     	</div>
     </div>
