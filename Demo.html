@@ -6,13 +6,17 @@
 </head>
 
 <body>
-	<div id="foldercontainer" class="hover" onClick="vensterOpenen()">
-		<div id="folder"></div>
-		<div id="titel" class="hover">Portfolio</div>
+	<div class="hover foldercontainer" onClick="vensterOpenen()">
+		<div class="folder"></div>
+		<div class="hover titel">Portfolio</div>
 	</div>
 <div id="venster">
 	<div id="balk">This PC &gt; Local Disk (C:) &gt; Portfolio
 		<div id="icoon" onClick="vensterSluiten()" class="hover">X</div>
+	</div>
+	<div class="hover foldercontainer" onClick="vensterOpenen()" style="margin: 35px 0 0 15px;">
+		<div class="folder"></div>
+		<div class="hover titel">Fotografie</div>
 	</div>
 </div>
 
@@ -22,15 +26,15 @@
   -ms-user-select: none; /* IE 10 and IE 11 */
   user-select: none; /* Standard syntax */
 }
-#foldercontainer{
+.foldercontainer{
 	width:75px;
 }
-#titel{
+.titel{
 	width:100%;
 	text-align:center;
 	font-size:14px;
 }
-#folder{
+.folder{
 	width:75px;
 	height:75px;
 	background-image: url(folder.jpg);
