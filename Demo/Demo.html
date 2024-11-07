@@ -19,6 +19,9 @@
     *:hover {
         cursor: default;
     }
+	body{
+		background-color:white;
+	}
     .foldercontainer {
         width: 75px;
         float: left;
@@ -27,6 +30,7 @@
     }
     .titel {
         width: 100%;
+		word-wrap: break-word;
     }
     .folder {
         width: 76px;
@@ -67,72 +71,122 @@
         color: white;
         background-color: black;
     }
+    /* Fullscreen knop stijl */
+    #fullscreenBtn {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        padding: 10px 15px;
+        background-color: black;
+        color: white;
+        border: none;
+        font-size: 15px;
+        cursor: pointer;
+        z-index: 1000;
+    }
 </style>
 </head>
+
 <body>
-    <!-- Folders -->
-    <div class="foldercontainer" ondblclick="vensterOpenen('venster')" onclick="vensterSelecteren('portfolio')">
+    <!-- Fullscreen knop -->
+    <button id="fullscreenBtn" onclick="toggleFullscreen()">Fullscreen AAN</button>
+	
+	 <!-- Folders -->
+    <div class="foldercontainer" ondblclick="vensterOpenen('venster')" onclick="vensterSelecteren('portfolio', event)">
         <div class="folder"></div>
         <div class="titel" id="portfolio">Portfolio</div>
     </div>
-
-    <div class="foldercontainer" ondblclick="vensterOpenen('prullenmand')" onclick="vensterSelecteren('prullenmand')">
+    <div class="foldercontainer" ondblclick="vensterOpenen('venster_prullenmand')" onclick="vensterSelecteren('prullenmand', event)">
         <div class="folder"></div>
         <div class="titel" id="prullenmand">Prullenmand</div>
     </div>
-
-    <!-- Hoofdvenster -->
-    <div id="venster" class="venster">
-        <div class="balk">This PC &gt; Local Disk (C:) &gt; Portfolio
+	
+ 	<!-- Hoofdvenster -->
+    <div id="venster" class="venster" onclick="event.stopPropagation()">
+        <div class="balk" onclick="event.stopPropagation()">This PC &gt; Local Disk (C:) &gt; Desktop &gt; Portfolio
             <div class="icoon" onclick="vensterSluiten('venster')">X</div>
         </div>
-        <div class="foldercontainer" ondblclick="vensterOpenen('venster_grafisch')" onclick="vensterSelecteren('grafisch')">
+        <div class="foldercontainer" ondblclick="vensterOpenen('venster_grafisch')" onclick="vensterSelecteren('grafisch', event)">
             <div class="folder"></div>
             <div class="titel" id="grafisch">Grafisch Ontwerp</div>
         </div>
-        <div class="foldercontainer" ondblclick="vensterOpenen('venster_fotografie')" onclick="vensterSelecteren('fotografie')">
+        <div class="foldercontainer" ondblclick="vensterOpenen('venster_fotografie')" onclick="vensterSelecteren('fotografie', event)">
             <div class="folder"></div>
             <div class="titel" id="fotografie">Fotografie</div>
         </div>
-        <div class="foldercontainer" ondblclick="vensterOpenen('venster_video')" onclick="vensterSelecteren('video')">
+        <div class="foldercontainer" ondblclick="vensterOpenen('venster_video')" onclick="vensterSelecteren('video', event)">
             <div class="folder"></div>
             <div class="titel" id="video">Video</div>
         </div>
-        <div class="foldercontainer" ondblclick="vensterOpenen('venster_webdesign')" onclick="vensterSelecteren('webdesign')">
+        <div class="foldercontainer" ondblclick="vensterOpenen('venster_webdesign')" onclick="vensterSelecteren('webdesign', event)">
             <div class="folder"></div>
             <div class="titel" id="webdesign">Webdesign</div>
         </div>
     </div>
-
-    <!-- Sub-vensters -->
-    <div id="venster_grafisch" class="venster">
-        <div class="balk">This PC &gt; Local Disk (C:) &gt; Portfolio &gt; Grafisch ontwerp
+	
+    <!-- Sub-windows -->
+	<div id="venster_prullenmand" class="venster" onclick="event.stopPropagation()">
+        <div class="balk">This PC &gt; Local Disk (C:) &gt; Prullenmand
+            <div class="icoon" onclick="vensterSluiten('venster_prullenmand')">X</div>
+        </div>
+		<div class="foldercontainer" onclick="vensterSelecteren('logo', event)">
+        	<div class="folder"></div>
+        	<div class="titel" id="logo">Logoontwerp_<br>v1_v2_final_<br>verbeterd_<br>klaar.ai</div>
+    	</div>
+		<div class="foldercontainer" onclick="vensterSelecteren('jajkbzgjbgz', event)">
+        	<div class="folder"></div>
+        	<div class="titel" id="jajkbzgjbgz">jajkbzgjbgz.jpeg</div>
+    	</div>
+    </div>
+	
+    <div id="venster_grafisch" class="venster" onclick="event.stopPropagation()">
+        <div class="balk">This PC &gt; Local Disk (C:) &gt; Desktop &gt; Portfolio &gt; Grafisch ontwerp
             <div class="icoon" onclick="vensterSluiten('venster_grafisch')">X</div>
         </div>
+		<div class="foldercontainer" onclick="vensterSelecteren('branding', event)">
+        	<div class="folder"></div>
+        	<div class="titel" id="branding">Branding</div>
+    	</div>
+		<div class="foldercontainer" onclick="vensterSelecteren('posters', event)">
+        	<div class="folder"></div>
+        	<div class="titel" id="posters">Posters</div>
+    	</div>
     </div>
-
-    <div id="venster_fotografie" class="venster">
-        <div class="balk">This PC &gt; Local Disk (C:) &gt; Portfolio &gt; Fotografie
+	
+    <div id="venster_fotografie" class="venster" onclick="event.stopPropagation()">
+        <div class="balk">This PC &gt; Local Disk (C:) &gt; Desktop &gt; Portfolio &gt; Fotografie
             <div class="icoon" onclick="vensterSluiten('venster_fotografie')">X</div>
         </div>
+		<div class="foldercontainer" onclick="vensterSelecteren('fotografiereeks', event)">
+        	<div class="folder"></div>
+        	<div class="titel" id="fotografiereeks">Fotografie<br>reeks</div>
+    	</div>
     </div>
 
-    <div id="venster_video" class="venster">
-        <div class="balk">This PC &gt; Local Disk (C:) &gt; Portfolio &gt; Video
+    <div id="venster_video" class="venster" onclick="event.stopPropagation()">
+        <div class="balk">This PC &gt; Local Disk (C:) &gt; Desktop &gt; Portfolio &gt; Video
             <div class="icoon" onclick="vensterSluiten('venster_video')">X</div>
         </div>
+		<div class="foldercontainer" onclick="vensterSelecteren('reclamespot', event)">
+        	<div class="folder"></div>
+        	<div class="titel" id="reclamespot">Reclamespot</div>
+    	</div>
+		<div class="foldercontainer" onclick="vensterSelecteren('chromakey', event)">
+        	<div class="folder"></div>
+        	<div class="titel" id="chromakey">Chroma Key</div>
+    	</div>
     </div>
 
-    <div id="venster_webdesign" class="venster">
-        <div class="balk">This PC &gt; Local Disk (C:) &gt; Portfolio &gt; Webdesign
+    <div id="venster_webdesign" class="venster" onclick="event.stopPropagation()">
+        <div class="balk">This PC &gt; Local Disk (C:) &gt; Desktop &gt; Portfolio &gt; Webdesign
             <div class="icoon" onclick="vensterSluiten('venster_webdesign')">X</div>
         </div>
     </div>
-
+	
 <script>
-    let zIndexCounter = 1;  // Voor de z-index
-    let offset = 30;  // Beginoffset voor de vensters
-    const maxOffset = 150;  // Max offset voordat deze reset
+    let zIndexCounter = 1;
+    let offset = 30;
+    const maxOffset = 150;
 
     function vensterOpenen(id) {
         const venster = document.getElementById(id);
@@ -159,13 +213,14 @@
         document.getElementById(id).style.display = "none";
     }
 
-    function vensterSelecteren(id) {
+    function vensterSelecteren(id, event) {
+        event.stopPropagation();  // voorkom dat het deselecteren wordt geactiveerd
         deselecteerFolders();
         document.getElementById(id).classList.add("selected");
     }
 
     function deselecteerFolders() {
-        ["portfolio", "prullenmand", "grafisch", "fotografie", "video", "webdesign"]
+        ["portfolio", "prullenmand", "grafisch", "fotografie", "video", "webdesign", "branding", "posters", "reclamespot", "chromakey", "fotografiereeks", "jajkbzgjbgz", "logo"]
             .forEach(id => document.getElementById(id).classList.remove("selected"));
     }
 
@@ -175,7 +230,7 @@
         });
         window.addEventListener('mouseup', mouseUp, false);
 
-        // Klik op de lege ruimte deselecteert folders
+        // Klik in de "leegte" van de pagina deselecteert folders
         document.body.addEventListener('click', function(e) {
             if (!e.target.closest('.foldercontainer') && !e.target.closest('.venster')) {
                 deselecteerFolders();
@@ -206,6 +261,19 @@
                 venster.style.top = `${e.clientY - venster.dataset.offsetY}px`;
             }
         });
+    }
+
+    // Fullscreen functionaliteit
+    function toggleFullscreen() {
+        if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen();
+            document.getElementById("fullscreenBtn").innerText = "Fullscreen UIT";
+        } else {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+                document.getElementById("fullscreenBtn").innerText = "Fullscreen AAN";
+            }
+        }
     }
 
     window.addEventListener('load', addListeners);
