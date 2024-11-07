@@ -9,7 +9,7 @@
 </head>
 
 <body>
-	<div class="hover foldercontainer" onClick="vensterOpenen()">
+	<div class="hover foldercontainer" ondblclick="vensterOpenen()" onClick="vensterSelecteren()">
 		<div class="folder"></div>
 		<div class="hover titel" id="portfolio">Portfolio</div>
 	</div>
@@ -98,7 +98,7 @@ cursor:default;
 }
 	
 .hover:hover{
-	cursor:pointer
+	cursor:default;
 }
 	
 </style>
@@ -110,16 +110,19 @@ let isDragging = false;
 	
 function vensterOpenen(){
 	document.getElementById('venster').style.display ="block";
-	document.getElementById('portfolio').style.color ="white";
-	document.getElementById('portfolio').style.backgroundColor ="black";
 }
+	
 function vensterSluiten(){
 	document.getElementById('venster').style.display ="none";
 	document.getElementById('portfolio').style.color ="black";
 	document.getElementById('portfolio').style.backgroundColor ="white";
 }
 
-
+function vensterSelecteren(){
+	document.getElementById('portfolio').style.color ="white";
+	document.getElementById('portfolio').style.backgroundColor ="black";
+}
+	
 function addListeners(){
     document.getElementById('balk').addEventListener('mousedown', mouseDown, false);
     window.addEventListener('mouseup', mouseUp, false);
