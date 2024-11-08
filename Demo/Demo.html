@@ -127,9 +127,9 @@ table {
 	z-index:100000;
 }
 .subnav:hover .subnav-content {
-    display: block;
+    display: none;
 }
-	
+
 body {
     background-color: white;
 }
@@ -210,12 +210,12 @@ body {
 <body>
 <div class="navbar">
   <div class="subnav">
-    <button class="subnavbtn">Directory<i class="fa fa-caret-down"></i></button>
+    <button class="subnavbtn" onClick="menuZichtbaar()">Directory<i class="fa fa-caret-down"></i></button>
     <div class="subnav-content">
-      <a onclick="vensterOpenen('venster_grafisch')">Graphic Design</a>
-      <a onclick="vensterOpenen('venster_fotografie')">Photography</a>
-      <a onclick="vensterOpenen('venster_video')">Video</a>
-      <a onclick="vensterOpenen('venster_webdesign')">Webdesign</a>
+      <a onclick="vensterOpenen('venster_grafisch');menuOnzichtbaar()">Graphic Design</a>
+      <a onclick="vensterOpenen('venster_fotografie');menuOnzichtbaar()">Photography</a>
+      <a onclick="vensterOpenen('venster_video');menuOnzichtbaar()">Video</a>
+      <a onclick="vensterOpenen('venster_webdesign');menuOnzichtbaar()">Webdesign</a>
     </div>
   </div>
   <div class="subnav">
@@ -335,7 +335,16 @@ body {
     let zIndexCounter = 1;
     let offset = 30;
     const maxOffset = 150;
-
+	const subnavContent = document.querySelector('.subnav-content');
+	
+	function menuZichtbaar(){
+		subnavContent.style.display = 'block';
+	}
+	
+	function menuOnzichtbaar(){
+		subnavContent.style.display = 'none';
+	}
+	
     function vensterOpenen(id) {
         const venster = document.getElementById(id);
         venster.style.display = "block";
