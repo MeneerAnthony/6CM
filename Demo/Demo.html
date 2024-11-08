@@ -74,16 +74,23 @@ table {
     overflow: hidden;
     background-color: rgba(195,193,193,0.7);
 	color:black;
-	border-bottom:1px black solid;
 }
 .navbar a {
-    float: left;
+	width:100px;
     font-size: 16px;
 	color:black;
     text-align: center;
     padding: 10px 20px;
     text-decoration: none;
+	text-align:left;
+	padding-left:10px;
 }
+	
+.navbar a:hover {
+	color:white;
+	background-color:black;
+}
+	
 .subnav {
     float: left;
     overflow: hidden;
@@ -117,6 +124,7 @@ table {
 	border-top:none;
 	color:black;
 	display:block;
+	z-index:100000;
 }
 .subnav:hover .subnav-content {
     display: block;
@@ -153,6 +161,12 @@ body {
     background-image: url("prullenmand.png");
     margin-bottom: 5px;
 }
+	
+#prullenmandcontainer {
+	right:30px;
+	bottom:30px;
+	position:absolute;
+}
 .venster {
     width: 500px;
     height: 300px;
@@ -188,31 +202,19 @@ body {
 }
 </style>
 </head>
-
 <body>
-	
-<!-- The navigation menu -->
 <div class="navbar">
-  <a href="#home">Finder</a>
   <div class="subnav">
-    <button class="subnavbtn">Archief <i class="fa fa-caret-down"></i></button>
+    <button class="subnavbtn">Directory<i class="fa fa-caret-down"></i></button>
     <div class="subnav-content">
-      <a href="#company">Company</a>
-      <a href="#team">Team</a>
-      <a href="#careers">Careers</a>
+      <a onclick="vensterOpenen('venster_grafisch')">Graphic Design</a>
+      <a onclick="vensterOpenen('venster_fotografie')">Photography</a>
+      <a onclick="vensterOpenen('venster_video')">Video</a>
+      <a onclick="vensterOpenen('venster_webdesign')">Webdesign</a>
     </div>
   </div>
   <div class="subnav">
-    <button class="subnavbtn">Wijzig <i class="fa fa-caret-down"></i></button>
-    <div class="subnav-content">
-      <a href="#bring">Bring</a>
-      <a href="#deliver">Deliver</a>
-      <a href="#package">Package</a>
-      <a href="#express">Express</a>
-    </div>
-  </div>
-  <div class="subnav">
-    <button class="subnavbtn" id="fullscreenBtn" onclick="toggleFullscreen()">Fullscreen AAN<i class="fa fa-caret-down"></i></button>
+    <button class="subnavbtn" id="fullscreenBtn" onclick="toggleFullscreen()">Fullscreen ON<i class="fa fa-caret-down"></i></button>
   </div>
 </div>	
 
@@ -221,7 +223,7 @@ body {
   <div class="folder"></div>
   <div class="titel" id="portfolio">Portfolio</div>
 </div>
-<div class="foldercontainer" ondblclick="vensterOpenen('venster_prullenmand')" onclick="vensterSelecteren('prullenmand', event)">
+<div class="foldercontainer" id="prullenmandcontainer" ondblclick="vensterOpenen('venster_prullenmand')" onclick="vensterSelecteren('prullenmand', event)">
   <div class="folder" id="prullenmandfolder"></div>
   <div class="titel" id="prullenmand">Prullenmand</div>
 </div>
@@ -391,11 +393,11 @@ body {
     function toggleFullscreen() {
         if (!document.fullscreenElement) {
             document.documentElement.requestFullscreen();
-            document.getElementById("fullscreenBtn").innerText = "Fullscreen UIT";
+            document.getElementById("fullscreenBtn").innerText = "Fullscreen OFF";
         } else {
             if (document.exitFullscreen) {
                 document.exitFullscreen();
-                document.getElementById("fullscreenBtn").innerText = "Fullscreen AAN";
+                document.getElementById("fullscreenBtn").innerText = "Fullscreen ON";
             }
         }
     }
