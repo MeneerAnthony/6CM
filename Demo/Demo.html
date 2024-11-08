@@ -167,6 +167,11 @@ body {
 	bottom:30px;
 	position:absolute;
 }
+	
+#overtekst{
+	padding:10px;
+	overflow:scroll;
+}
 .venster {
     width: 500px;
     height: 300px;
@@ -223,6 +228,10 @@ body {
   <div class="folder"></div>
   <div class="titel" id="portfolio">Portfolio</div>
 </div>
+<div class="foldercontainer" ondblclick="vensterOpenen('venster_over')" onclick="vensterSelecteren('over', event)">
+  <div class="imagebestand"></div>
+  <div class="titel" id="over">Over.rtf</div>
+</div>
 <div class="foldercontainer" id="prullenmandcontainer" ondblclick="vensterOpenen('venster_prullenmand')" onclick="vensterSelecteren('prullenmand', event)">
   <div class="folder" id="prullenmandfolder"></div>
   <div class="titel" id="prullenmand">Prullenmand</div>
@@ -267,6 +276,19 @@ body {
     <div class="imagebestand"></div>
     <div class="titel" id="jajkbzgjbgz">jajkbzgjbgz.jpeg</div>
   </div>
+</div>
+<div id="venster_over" class="venster" onclick="event.stopPropagation()" style="height: 500px;">
+  <div class="balk">This PC &gt; Local Disk (C:) &gt; Over.rtf
+    <div class="icoon" onclick="vensterSluiten('venster_over')">X</div>
+  </div>
+	<div id="overtekst">
+	<h6>Lorem ipsum odor amet</h6>
+		<br>consectetuer adipiscing elit. Feugiat egestas id vehicula consectetur aliquam quam dapibus torquent. Commodo eget accumsan vivamus, tortor inceptos placerat. Faucibus magnis sit himenaeos interdum aenean lacus ornare. Hendrerit conubia enim euismod facilisi luctus sagittis sit montes. Fusce morbi laoreet ullamcorper class adipiscing tristique congue. Vel integer suscipit ut pharetra mi placerat. Dignissim malesuada quis eleifend metus nulla egestas rhoncus fringilla.
+	<br> <br>
+	Ut adipiscing est nascetur justo senectus porttitor vehicula praesent. Ante odio tempor suscipit per mollis ullamcorper varius. Proin pellentesque accumsan porttitor natoque fringilla fermentum felis quisque ante. Egestas mattis gravida orci mollis, porta condimentum rhoncus. Aptent condimentum quam consequat velit posuere velit massa. Velit dignissim pharetra urna donec velit viverra mattis, ut habitasse. Proin hac rutrum elementum imperdiet feugiat.
+		<br><br>consectetuer adipiscing elit. Feugiat egestas id vehicula consectetur aliquam quam dapibus torquent. Commodo eget accumsan vivamus, tortor inceptos placerat. Faucibus magnis sit himenaeos interdum aenean lacus ornare. Hendrerit conubia enim euismod facilisi luctus sagittis sit montes. Fusce morbi laoreet ullamcorper class adipiscing tristique congue. Vel integer suscipit ut pharetra mi placerat. Dignissim malesuada quis eleifend metus nulla egestas rhoncus fringilla.
+	<br>
+	</div>
 </div>
 <div id="venster_grafisch" class="venster" onclick="event.stopPropagation()">
   <div class="balk">This PC &gt; Local Disk (C:) &gt; Desktop &gt; Portfolio &gt; Grafisch ontwerp
@@ -346,7 +368,7 @@ body {
     }
 
     function deselecteerFolders() {
-        ["portfolio", "prullenmand", "grafisch", "fotografie", "video", "webdesign", "branding", "posters", "reclamespot", "chromakey", "fotografiereeks", "jajkbzgjbgz", "logo"]
+        ["portfolio", "prullenmand", "grafisch", "fotografie", "video", "webdesign", "branding", "posters", "reclamespot", "chromakey", "fotografiereeks", "jajkbzgjbgz", "logo", "over"]
             .forEach(id => document.getElementById(id).classList.remove("selected"));
     }
 
